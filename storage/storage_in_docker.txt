@@ -1,0 +1,73 @@
+Introduction to Docker Storage
+
+there are 2 things to know in docker Storage
+1. storage drivers
+2. volume drivers
+
+Storage in Docker 
+File system 
+    /var/lib/docker 
+    aufs 
+    containers 
+    image 
+    volumes 
+
+Layered architecture
+
+Layered architecture 
+Dockerfile
+    FROM Ubuntu 
+    RUN apt-get update && apt-get -y install python 
+    RUN pip install flask flask-mysql 
+    COPY . /opt/source-code 
+    ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run 
+docker build Dockerfile -t mmumshad/my-custom-app 
+
+Layer 1: Base Ubuntu Layer
+Layer 2: Changes in apt packages
+Layer 3: Changes in pip packages
+Layer 4: Source Code
+Layer 5: Update Entrypoint
+
+- image layer -- Read only
+- Container Layer -- Write Read
+
+To make data persist, use persistent volume
+
+# docker volume create data_volume
+docker run -v data:/var/lib/mysql mysql -- Volume mount
+docker run -v /data/mysql:/var/lib/mysql mysql -- bind mount
+
+docker run --mount type=bind, source=/data/mysql, target=/var/lib/mysql mysql  -- New way
+
+This mounting is achieved using storage drivers, some examples are 
+
+Storage drivers 
+• AUFS 
+• ZFS 
+• BTRFS 
+• Device Mapper 
+• Overlay 
+• Overlay2 
+
+Volume Driver Plugins in Docker
+
+Default volume driver is Local.
+
+Other driver
+Local
+Azure File Storage 
+Convoy 
+DigitalOcean Block Storage 
+Flocker
+gce-docker
+GlusterFS 
+NetApp
+RexRay
+Portworx
+VMware vSphere Storage 
+
+
+Container Storage Interface
+
+ 

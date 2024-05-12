@@ -1,0 +1,29 @@
+
+A persistent volume(PV) is a cluster wide pool of storage volumes configured by an administrator to be used by users deploying applications on the cluster.
+
+The users can now select storage from this pool using persistent volume claims(PVCs).
+
+let us now create a persistent using definition file.
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-vol1
+spec:
+  accessmodes:
+      - ReadWriteOnce
+  capacity: # storage reserved for this PV
+    storage: 1Gi
+  hostPath: # volume type, NOT TO BE USED FOR PRD
+    path: /tmp/data 
+
+
+
+
+Access modes:
+
+- ReadWriteOnce
+- ReadOnlyMany
+- ReadWriteMany
+

@@ -1,0 +1,35 @@
+Ask 
+Purpose 
+    Education 
+    Development & Testing 
+    Hosting Production Applications 
+Cloud or OnPrem? 
+Workloads 
+    How many? 
+    What kind? 
+        Web 
+        Big Data/Analytics 
+Application Resource Requirements 
+    CPU Intensive 
+    Memory Intensive 
+Traffic 
+    Heavy traffic 
+    Burst Traffic 
+
+
+HA k8s Cluster
+
+HA ETCD setup
+- RAFT
+- Quorum
+
+
+Important Update: Kubernetes the Hard Way
+
+Installing Kubernetes the hard way can help you gain a better understanding of putting together the different components manually.
+
+An optional series on this is available at our youtube channel here:
+
+https://www.youtube.com/watch?v=uUupRagM7m0&list=PL2We04F3Y_41jYdadX55fdJplDvgNGENo
+
+The GIT Repo for this tutorial can be found here: https://github.com/mmumshad/kubernetes-the-hard-way
