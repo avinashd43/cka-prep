@@ -1,0 +1,19 @@
+Configuring Scheduler Profiles
+
+1. scheduling queue(Plugin name: PrioritySort) (Based on priority class [should be created separately])--> Filtering(Plugin name: NodeResourcesFit and NodeName and NodeUnschedule) --> Scoring(Plugin name: NodeResourcesFit and ImageLocality) --> Binding (Plugin name: DefaultBinder) 
+
+These plugin placement can be modified using Extension Points.
+
+scheduling queue -- queuesort 
+Filtering -- filter
+Scoring -- score
+Binding -- bind
+
+
+https://github.com/kubernetes/community/blob/master/contributors/devel/sig-scheduling/scheduling_code_hierarchy_overview.md
+
+https://kubernetes.io/blog/2017/03/advanced-scheduling-in-kubernetes/
+
+https://jvns.ca/blog/2017/07/27/how-does-the-kubernetes-scheduler-work/
+
+https://stackoverflow.com/questions/28857993/how-does-kubernetes-scheduler-work

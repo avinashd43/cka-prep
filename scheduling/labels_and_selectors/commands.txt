@@ -1,0 +1,4 @@
+kubectl get pods --selector env=dev --no-headers | wc -l
+kubectl get pods --selector bu=finance --no-headers | wc -l
+kubectl get all --selector env=prod --no-headers | wc -l
+kubectl get all --selector env=prod,bu=finance,tier=frontend

@@ -1,0 +1,37 @@
+# 1 create the configmaps.
+# 2 injest it into the pods.
+# 2 ways to create the configmaps, using command and using definition file
+# kubeclt create configmap <config-name> --from-literal=<key>=<value>
+# EX kubeclt create configmap app-config --from-literal=APP_COLOR=blue --from-literal=APP_MOD=prod
+# kubeclt create configmap <config-name> --from-file=<path-to-file>
+# EX kubeclt create configmap app-config --from-file=app_config.properties
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_COLOR: blue
+  APP_MOD: prod
+
+# kubeclt create -f <configmap-definition.yaml>
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app
+spec:
+  containers:
+    - name: my-app
+      image: nginx
+      env:
+        - name: APP_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: APP_COLOR
+      envFrom:
+        - configMapRef:
+            name: app-config

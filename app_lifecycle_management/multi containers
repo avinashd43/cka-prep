@@ -1,0 +1,54 @@
+Multi Container Pods
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yellow
+spec:
+  containers:
+  - name: lemon
+    image: busybox
+    command:
+      - sleep
+      - "1000"
+
+  - name: gold
+    image: redis
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: elastic-stack
+  labels:
+    name: app
+spec:
+  containers:
+  - name: app
+    image: kodekloud/event-simulator
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+
+  - name: sidecar
+    image: kodekloud/filebeat-configured
+    volumeMounts:
+    - mountPath: /var/log/event-simulator/
+      name: log-volume
+
+  volumes:
+  - name: log-volume
+    hostPath:
+      # directory location on host
+      path: /var/log/webapp
+      # this field is optional
+      type: DirectoryOrCreate
+
+
+
+# Multi-container Pods Design Patterns
+# There are 3 common patterns, when it comes to designing multi-container PODs. The first and what we just saw with the logging service example is known as a side car pattern. The others are the adapter and the ambassador pattern.
+
+# But these fall under the CKAD curriculum and are not required for the CKA exam. So we will be discuss these in more detail in the CKAD course.
+

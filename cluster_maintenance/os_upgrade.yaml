@@ -1,0 +1,3 @@
+# kubectl drain node-1 -- Evicts pods and marks as unschedulable. -- only works if POS is created via a ReplicationContorller or ReplicaSet or Deployment
+# kubectl cordon node-2 -- Dont evict pods only marks unschedulable.
+# kubectl uncordon node-1 -- Bringing back from drain or cordon.

@@ -1,0 +1,14 @@
+Commands and Arguments in Docker\
+there are two ways you can pass cmd and Arguments
+
+1. using CMD in simple bash way or using json form ["sleep", "5"]
+2. using endpoint, here you need to pass using json only.
+
+having endpoint in docker image itself helps with the simplifying the arg send when image is used, having both endpoint and cmd in image helps to set default process and default arg for that image.
+
+ex
+
+FROM ubuntu
+
+ENDPOINT ["sleep"]
+CMD["5"]

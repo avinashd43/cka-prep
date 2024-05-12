@@ -1,0 +1,1 @@
+kubelet logs pod <pod-name>

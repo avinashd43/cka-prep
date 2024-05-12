@@ -1,0 +1,42 @@
+Commands and Arguments in Kubernetes
+
+FROM ubuntu
+
+ENDPOINT ["sleep"]
+CMD["5"]
+
+A docker image ENDPOINT is called command in k8s
+and CMD is called as args in k8s.
+
+
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+  labels:
+    env: PRD
+spec:
+  containers:
+    - name: ubuntu-sleeper
+      image: ubuntu-sleeper
+      command: ["sleep"]
+      args: ["10"]
+
+above or this "kubectl run webapp-green --image=kodekloud/webapp-color --command -- sleep 10"
+---
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: webapp-green
+  labels:
+      name: webapp-green 
+spec:
+  containers:
+  - name: simple-webapp
+    image: kodekloud/webapp-color
+    args: ["--color", "green"]
+
+Above or "kubectl run webapp-green --image=kodekloud/webapp-color -- --color green"

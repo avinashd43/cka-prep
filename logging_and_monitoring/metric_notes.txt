@@ -1,0 +1,9 @@
+
+kubectl top node --sort-by='memory' --no-headers | head
+
+git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+
+k create -f kubernetes-metrics-server/
+
+k top pods --sort-by=cpu
+k top pods --sort-by=memory
